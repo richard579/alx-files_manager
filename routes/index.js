@@ -2,9 +2,9 @@
 const express = require('express');
 
 // import the controllers
-const AppController = require('../controllers/AppController');
-const UsersController = require('../controllers/UsersController');
-const AuthController = require('../controllers/AuthController');
+const AppController = require('../controllers/AppController.js');
+const UsersController = require('../controllers/UsersController.js');
+const AuthController = require('../controllers/AuthController.js');
 
 // create the router
 const router = express.Router();

@@ -1,6 +1,6 @@
 // import the Redis and MongoDB clients
-const redisClient = require('../utils/redis');
-const dbClient = require('../utils/db');
+const redisClient = require('../utils/redis.js');
+const dbClient = require('../utils/db.js');
 
 class AppController {
   static async getStatus(req, res) {
