@@ -1,26 +1,17 @@
-// import the Redis and MongoDB clients
-const redisClient = require('../utils/redis.js');
-const dbClient = require('../utils/db.js');
+import redisClient from '../utils/redis';
+import dbClient from '../utils/db';
 
 class AppController {
   static async getStatus(req, res) {
-    const redisStatus = redisClient.isAlive;
-    const dbStatus = dbClient.isAlive();
-    return res.status(200).json({
-      redis: redisStatus,
-      db: dbStatus,
-    });
+    const redisAlive = await redisClient.isAlive();
+    const dbAlive = await dbClient.isAlive();
+    return res.status(200).send({ redis: redisAlive, db: dbAlive });
   }
 
   static async getStats(req, res) {
-    const usersCount = await dbClient.nbUsers();
-    const filesCount = await dbClient.nbFiles();
-    return res.status(200).json({
-      users: usersCount,
-      files: filesCount,
-    });
+    const usersNumber = await dbClient.nbUsers();
+    const filesNumber = await dbClient.nbFiles();
+    return res.status(200).send({ users: usersNumber, files: filesNumber });
   }
 }
-
-// export the controller
 module.exports = AppController;
